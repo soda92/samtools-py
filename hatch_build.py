@@ -1,7 +1,7 @@
 import contextlib
 from typing import Any
-import subprocess
-import shutil
+import subprocess  # noqa: F401
+import shutil  # noqa: F401
 
 from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 
@@ -17,8 +17,6 @@ def CD(d: str):
 
 
 def build():
-    # with CD("diskstat"):
-    #     subprocess.run("make", shell=True, check=True)
     pass
 
 class CustomBuilder(BuildHookInterface):

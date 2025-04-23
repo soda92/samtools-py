@@ -18,6 +18,14 @@ wheels = [
 ]
 
 [[package]]
+name = "msys2-env"
+version = "2025.4.23.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/72/81/10173d08f37df04685b779aed4a547860ea164b6d37312d915d1c4a7d83d/msys2_env-2025.4.23.0-py3-none-win_amd64.whl", hash = "sha256:e1d4d135b1b0156ffa00d8f0bf76c32ec2edbcf7f23edaf0b446e18ea76e01ce", size = 2884374 },
+]
+
+[[package]]
 name = "packaging"
 version = "25.0"
 source = { registry = "https://pypi.org/simple" }
@@ -48,6 +56,9 @@ wheels = [
 name = "samtools-py"
 version = "2025.4.23.0"
 source = { editable = "." }
+dependencies = [
+    { name = "msys2-env" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -55,6 +66,7 @@ dev = [
 ]
 
 [package.metadata]
+requires-dist = [{ name = "msys2-env", specifier = ">=2025.4.23.0" }]
 
 [package.metadata.requires-dev]
 dev = [{ name = "hatchling", specifier = ">=1.27.0" }]
