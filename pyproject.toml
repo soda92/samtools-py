@@ -16,12 +16,12 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.sdist]
 ignore-vcs = true
 packages = ["samtools_py", "samtools"]
-exclude = ["__pycache__", "*.pyc", "*.exe~", "*.syso", "*.sam"]
+exclude = ["__pycache__", "*.pyc", "*.exe~", "*.syso", "*.sam", "*.bam"]
 
 [tool.hatch.build.targets.wheel]
 ignore-vcs = true
 packages = ["samtools_py", "samtools"]
-exclude = ["__pycache__", "*.pyc", "*.exe~", "*.syso", "*.sam"]
+exclude = ["__pycache__", "*.pyc", "*.exe~", "*.syso", "*.sam", "*.bam"]
 
 [tool.hatch.build.hooks.custom]
 
