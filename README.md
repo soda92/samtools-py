@@ -8,4 +8,3 @@ samtools python wrapper (Windows only)
 1. run `samtools\bin\fish.ps1` to enter msys2
 1. install samtools: `pacman -S mingw-w64-ucrt-x86_64-samtools`
 1. remove python: `pacman -Rs mingw-w64-ucrt-x86_64-python` because it's not needed to run samtools
-1. in samtools/data, delete "usr", "var", "etc" folder
