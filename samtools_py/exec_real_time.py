@@ -2,6 +2,7 @@ import subprocess
 import threading
 import sys
 
+
 def exec_real_time(command, text_stdout=True, text_stderr=True):
     """
     Executes a command and prints its stdout and stderr in real time,
@@ -14,11 +15,7 @@ def exec_real_time(command, text_stdout=True, text_stderr=True):
         text_stderr (bool): If True, decode stderr as text (default).
                              If False, treat stderr as raw bytes.
     """
-    process = subprocess.Popen(
-        command,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE
-    )
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def handle_stream(stream, is_stderr, as_text):
         while True:
@@ -27,12 +24,14 @@ def exec_real_time(command, text_stdout=True, text_stderr=True):
                 break
             if as_text:
                 try:
-                    text = chunk.decode(sys.stdout.encoding or 'utf-8', errors='replace')
+                    text = chunk.decode(sys.stdout.encoding or "utf-8")
                     if is_stderr:
                         sys.stderr.write(f"stderr: {text}")
                     else:
                         sys.stdout.write(text)
                 except UnicodeDecodeError:
+                    print("binary data detected")
+                    as_text = False
                     if is_stderr:
                         sys.stderr.buffer.write(chunk)
                     else:
@@ -45,8 +44,12 @@ def exec_real_time(command, text_stdout=True, text_stderr=True):
             sys.stdout.flush()
             sys.stderr.flush()
 
-    stdout_thread = threading.Thread(target=handle_stream, args=(process.stdout, True, text_stdout))
-    stderr_thread = threading.Thread(target=handle_stream, args=(process.stderr, True, text_stderr))
+    stdout_thread = threading.Thread(
+        target=handle_stream, args=(process.stdout, True, text_stdout)
+    )
+    stderr_thread = threading.Thread(
+        target=handle_stream, args=(process.stderr, True, text_stderr)
+    )
 
     stdout_thread.start()
     stderr_thread.start()

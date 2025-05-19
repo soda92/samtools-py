@@ -1,10 +1,10 @@
 [project]
 name = "samtools-py"
-version = "2025.4.23.0"
+version = "2025.5.19.0"
 description = "samtools python wrapper (Windows only)"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["msys2-env>=2025.4.23.0"]
+dependencies = ["msys2-env>=2025.5.19.0"]
 
 [project.urls]
 Repository = "https://github.com/soda92/samtools_py"

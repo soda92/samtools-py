@@ -4,7 +4,6 @@ from pathlib import Path
 
 
 def main():
-    # print("Hello from samtools-py!")
     args = sys.argv[1:]
 
     cwd = Path(__file__).resolve().parent
